@@ -1,3 +1,5 @@
+Multiple different version of react and react-router mounting on different dom nodes, along with properly long-term cached code
+
 ### install
 ```bash
 yarn
