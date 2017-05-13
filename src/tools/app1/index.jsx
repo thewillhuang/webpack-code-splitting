@@ -6,7 +6,7 @@ import B from '../../shared/b';
 
 render(
   <h3>
-    <p>app1 loaded, using {React.version}</p>
+    <p>App1 loaded, using {React.version}</p>
     <Example />
     <A />
     <B />
