@@ -1,4 +1,5 @@
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import WebpackChunkHash from 'webpack-chunk-hash';
 import webpack from 'webpack';
 import base from './webpack.base.config.babel';
 
@@ -11,17 +12,18 @@ export default Object.assign(base, {
       },
     }),
     new webpack.HashedModuleIdsPlugin(),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false,
-    //     drop_debugger: true,
-    //     drop_console: true,
-    //   },
-    //   output: {
-    //     comments: false,
-    //   },
-    //   sourceMap: false,
-    // }),
+    new WebpackChunkHash(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_debugger: true,
+        drop_console: true,
+      },
+      output: {
+        comments: false,
+      },
+      sourceMap: false,
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       children: true,
       async: true,
@@ -36,4 +38,7 @@ export default Object.assign(base, {
       minChunks: Infinity,
     }),
   ]),
+  // output: Object.assign(base.output, {
+  //   filename: '[name].[chunkhash].js',
+  // }),
 });

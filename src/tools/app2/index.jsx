@@ -9,8 +9,8 @@ const App = React.createClass({
         <ul>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/inbox">Inbox</Link></li>
-          <li><Link to="/1">One</Link></li>
-          <li><Link to="/2">Two</Link></li>
+          <li><Link to="/one">One</Link></li>
+          <li><Link to="/two">Two</Link></li>
         </ul>
         {this.props.children}
       </div>
@@ -48,8 +48,8 @@ const Modules = async () => {
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <Route path="about" component={About} />
-        <Route path="1" component={One} />
-        <Route path="2" component={Two} />
+        <Route path="one" component={One} />
+        <Route path="two" component={Two} />
         <Route path="inbox" component={Inbox}>
           <Route path="messages/:id" component={Message} />
         </Route>
