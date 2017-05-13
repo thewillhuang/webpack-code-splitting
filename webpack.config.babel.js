@@ -4,7 +4,8 @@ import webpack from 'webpack';
 
 export default {
 	entry: {
-		app: ['./js/main.js']
+		app: ['./js/main'],
+		f: ['./js/f'],
 	},
 	module: {
 		rules: [{
@@ -22,7 +23,7 @@ export default {
 			    "react"
 			  ]
 			},
-			test: /\.js$/,
+			test: /\.jsx?$/,
 			exclude: /node_modules/
 		}]
 	},
@@ -33,12 +34,17 @@ export default {
 	},
 	plugins: [
 		new BundleAnalyzerPlugin(),
+		new webpack.DefinePlugin({
+			'process.env': {
+				NODE_ENV: JSON.stringify('production'),
+			},
+		}),
 		new webpack.HashedModuleIdsPlugin(),
 		new webpack.optimize.UglifyJsPlugin({
        compress: {
          warnings: false,
          drop_debugger: true,
-        //  drop_console: true,
+         drop_console: true,
        },
        output: {
          comments: false,
@@ -47,15 +53,19 @@ export default {
     }),
 		new webpack.optimize.CommonsChunkPlugin({
 			children: true,
-			async: true
+			async: true,
+			minChunks: 2,
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'common',
-			minChunks: 2
+			minChunks: 2,
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'manifest',
-			minChunks: Infinity
+			minChunks: Infinity,
 		}),
-	]
+	],
+	resolve: {
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss', 'ts', 'tsx'],
+  },
 };

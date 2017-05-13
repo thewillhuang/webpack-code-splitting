@@ -1,6 +1,10 @@
 import React from 'react';
-console.log(React.version);
-document.getElementById('App').innerHTML += '<p>main.js loaded</p>';
+import { render } from 'react-dom';
+
+render(
+  <h1><p>main.js loaded, using {React.version}</p></h1>,
+  document.getElementById('App')
+);
 
 import('./views/1').then((module) => {
   console.log('./views/1 loaded');
