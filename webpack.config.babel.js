@@ -11,17 +11,17 @@ export default Object.assign(base, {
       },
     }),
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_debugger: true,
-        drop_console: true,
-      },
-      output: {
-        comments: false,
-      },
-      sourceMap: false,
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false,
+    //     drop_debugger: true,
+    //     drop_console: true,
+    //   },
+    //   output: {
+    //     comments: false,
+    //   },
+    //   sourceMap: false,
+    // }),
     new webpack.optimize.CommonsChunkPlugin({
       children: true,
       async: true,

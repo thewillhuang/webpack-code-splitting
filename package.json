@@ -1,11 +1,8 @@
 {
   "title": "webpack-code-splitting",
   "name": "webpack-code-splitting",
-  "version": "0.0.0",
-  "private": true,
-  "repository": "non-public",
   "scripts": {
-    "postinstall": "find ./js/* -name package.json -maxdepth 2 -execdir yarn \\;",
+    "postinstall": "find ./src/* -name package.json -maxdepth 2 -execdir yarn \\;",
     "clean": "find . -name package.json -execdir rm -fr node_modules \\;",
     "build": "yarn; rm -fr build && webpack --progress --bail --config webpack.config.babel.js",
     "dev": "yarn; rm -fr build && webpack-dev-server --open --hot --output-public-path='/build/' --progress --history-api-fallback --compress --config webpack.dev.config.babel.js"
@@ -14,6 +11,7 @@
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -26,10 +24,8 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
-    "react": "^15.5.4",
-    "react-addons-css-transition-group": "^15.5.2",
-    "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1",
-    "webpack": "2.5.1"
+    "babel-runtime": "^6.23.0",
+    "react": "^0.14.9",
+    "webpack": "2.4.1"
   }
 }
