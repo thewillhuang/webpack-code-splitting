@@ -1,0 +1,26 @@
+{
+  "title": "webpack-code-splitting",
+  "name": "webpack-code-splitting",
+  "version": "0.0.0",
+  "private": true,
+  "repository": "non-public",
+  "scripts": {
+    "postinstall": "find ./js/* -name package.json -maxdepth 2 -execdir yarn \\;",
+    "clean": "find . -name package.json -execdir rm -fr node_modules \\;",
+    "build": "yarn && rm -fr build && webpack --config webpack.config.babel.js",
+    "start": "webpack-dev-server --hot --progress --history-api-fallback --config webpack.config.babel.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "webpack": "2.5.1",
+    "webpack-bundle-analyzer": "^2.8.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "react": "^15.5.4"
+  }
+}
