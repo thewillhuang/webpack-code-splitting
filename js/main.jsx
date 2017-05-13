@@ -1,9 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
+import BasicExample from './router';
 
 render(
-  <h1><p>main.js loaded, using {React.version}</p></h1>,
-  document.getElementById('App')
+  <div><h1><p>main.js loaded, using {React.version}</p></h1><BasicExample />
+  </div>,
+  global.document.getElementById('App'),
 );
 
 import('./views/1').then((module) => {
@@ -12,4 +14,4 @@ import('./views/1').then((module) => {
 
 import('./views/2').then((module) => {
   console.log('./views/2 loaded');
-}).catch(e => console.log(e));;
+}).catch(e => console.log(e));

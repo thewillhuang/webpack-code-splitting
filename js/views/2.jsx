@@ -5,7 +5,7 @@ import c from './../modules/c';
 
 render(
   <h1><p>views/2.js loaded, using {React.version}</p></h1>,
-  document.getElementById('App5')
+  global.document.getElementById('App5'),
 );
 
-export default () => {}
+export default () => {};
