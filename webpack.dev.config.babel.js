@@ -1,3 +1,4 @@
+import webpack from 'webpack';
 import base from './webpack.base.config.babel';
 
 export default Object.assign(base, {
