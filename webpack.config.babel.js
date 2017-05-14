@@ -38,7 +38,7 @@ export default Object.assign(base, {
       minChunks: Infinity,
     }),
   ]),
-  // output: Object.assign(base.output, {
-  //   filename: '[name].[chunkhash].js',
-  // }),
+  output: Object.assign(base.output, {
+    filename: '[name].[chunkhash].js',
+  }),
 });
