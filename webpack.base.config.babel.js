@@ -46,6 +46,8 @@ export default {
           },
         ],
       }, {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
           babelrc: false,
@@ -61,9 +63,8 @@ export default {
             'react',
           ],
         },
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-      }],
+      },
+    ],
   },
   output: {
     path: path.resolve('./build'),
