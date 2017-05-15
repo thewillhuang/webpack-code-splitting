@@ -1,3 +1,4 @@
+import webpack from 'webpack';
 import base, { PostCSS, CSSLoaderConfig } from './webpack.base.config.babel';
 
 export default Object.assign(base, {
@@ -8,6 +9,9 @@ export default Object.assign(base, {
   output: Object.assign(base.output, {
     devtoolModuleFilenameTemplate: '/[absolute-resource-path]',
   }),
+  plugins: base.plugins.concat([
+    new webpack.NamedModulesPlugin(),
+  ]),
   devtool: 'eval-source-map',
   module: {
     rules: base.module.rules.concat([
