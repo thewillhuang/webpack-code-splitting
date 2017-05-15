@@ -5,11 +5,12 @@ import A from '../../shared/a';
 import B from '../../shared/b';
 
 render(
-  <h3>
-    <p>App1 loaded, using React version {React.version}</p>
+  <h1>
+    <p>App1 loaded, using React version {React.version} and children loaded with another version of react</p>
     <Example />
     <A />
     <B />
-  </h3>,
+    ----------------------------------------
+  </h1>,
   global.document.getElementById('App1'),
 );

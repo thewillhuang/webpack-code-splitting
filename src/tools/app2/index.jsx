@@ -5,7 +5,7 @@ const App = React.createClass({
   render() {
     return (
       <div>
-        <h3>App2 loaded using React version {React.version}</h3>
+        <h2>App2 loaded using React version {React.version}</h2>
         <ul>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/inbox">Inbox</Link></li>
@@ -13,6 +13,7 @@ const App = React.createClass({
           <li><Link to="/two">Two</Link></li>
         </ul>
         {this.props.children}
+        -----------------------------------------------
       </div>
     );
   },

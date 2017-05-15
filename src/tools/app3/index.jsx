@@ -22,7 +22,7 @@ class Clock extends Component {
 
   render(props, state) {
     const time = new Date(state.time).toLocaleTimeString();
-    return <span>{`${time} rendered with Preact`}</span>;
+    return <h3>{`App 3 ${time} rendered with Preact`}</h3>;
   }
 }
 
