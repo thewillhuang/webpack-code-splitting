@@ -1,4 +1,4 @@
-import base from './webpack.base.config.babel';
+import base, { PostCSS, CSSLoaderConfig } from './webpack.base.config.babel';
 
 export default Object.assign(base, {
   devServer: {
@@ -8,5 +8,25 @@ export default Object.assign(base, {
   output: Object.assign(base.output, {
     devtoolModuleFilenameTemplate: '/[absolute-resource-path]',
   }),
-  devtool: 'eval-cheap-module-source-map',
+  devtool: 'eval-source-map',
+  module: {
+    rules: base.module.rules.concat([
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'style-loader',
+        }, CSSLoaderConfig(), PostCSS, {
+          loader: 'sass-loader',
+        }],
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'style-loader',
+        }, CSSLoaderConfig(), PostCSS],
+      },
+    ]),
+  },
 });

@@ -1,7 +1,8 @@
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import WebpackChunkHash from 'webpack-chunk-hash';
 import webpack from 'webpack';
-import base from './webpack.base.config.babel';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import base, { PostCSS, CSSLoaderConfig } from './webpack.base.config.babel';
 
 export default Object.assign(base, {
   plugins: base.plugins.concat([
@@ -41,4 +42,26 @@ export default Object.assign(base, {
   output: Object.assign(base.output, {
     filename: '[name].[chunkhash].js',
   }),
+  module: {
+    rules: base.module.rules.concat([
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [CSSLoaderConfig(true), PostCSS, {
+            loader: 'sass-loader',
+          }],
+        }),
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [CSSLoaderConfig(true), PostCSS],
+        }),
+      },
+    ]),
+  },
 });
