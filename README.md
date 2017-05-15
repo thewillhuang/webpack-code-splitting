@@ -1,4 +1,4 @@
-Multiple different versions of react and react-router mounting on different dom nodes, along with properly long-term cached code
+Different versions of react and react-router mounting on different DOM nodes, along with properly long-term cached code
 
 ### install
 ```bash
