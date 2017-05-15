@@ -64,6 +64,24 @@ export default {
           ],
         },
       },
+      {
+        test: /\.scss$/,
+        include: /node_modules/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.css$/,
+        include: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: '[sha512:hash:base64:7].[ext]',
+        },
+      },
     ],
   },
   output: {

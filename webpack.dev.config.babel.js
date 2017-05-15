@@ -31,6 +31,16 @@ export default Object.assign(base, {
           loader: 'style-loader',
         }, CSSLoaderConfig(), PostCSS],
       },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name: '[sha512:hash:base64:7].[ext]',
+          },
+        },
+      },
     ]),
   },
 });
