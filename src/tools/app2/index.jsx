@@ -1,4 +1,4 @@
-import React, { render } from 'react';
+import React, { render, Component } from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 
 const App = React.createClass({
@@ -41,6 +41,7 @@ const Message = React.createClass({
     return <h3>Message {this.props.params.id}</h3>;
   },
 });
+
 
 const Modules = async () => {
   const { default: One } = await import('./views/1');
