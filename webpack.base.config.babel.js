@@ -30,59 +30,43 @@ export default {
     app3: ['./src/tools/app3'],
   },
   module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true,
+    rules: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+      options: {
+        babelrc: false,
+        plugins: ['transform-runtime'],
+        presets: [
+          ['env', {
+            targets: {
+              uglify: true,
             },
-          },
-          {
-            loader: 'ts-loader',
-          },
+            modules: false,
+          }],
+          'stage-0',
+          'react',
         ],
-      }, {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          babelrc: false,
-          plugins: ['transform-runtime'],
-          presets: [
-            ['env', {
-              targets: {
-                uglify: true,
-              },
-              modules: false,
-            }],
-            'stage-0',
-            'react',
-          ],
-        },
       },
-      {
-        test: /\.scss$/,
-        include: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+    },
+    {
+      test: /\.scss$/,
+      include: /node_modules/,
+      use: ['style-loader', 'css-loader', 'sass-loader'],
+    },
+    {
+      test: /\.css$/,
+      include: /node_modules/,
+      use: ['style-loader', 'css-loader'],
+    },
+    {
+      test: /\.(eot|ttf|woff|woff2)$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: '[sha512:hash:base64:7].[ext]',
       },
-      {
-        test: /\.css$/,
-        include: /node_modules/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(eot|ttf|woff|woff2)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: '[sha512:hash:base64:7].[ext]',
-        },
-      },
-    ],
+    }],
   },
   output: {
     path: path.resolve('./build'),

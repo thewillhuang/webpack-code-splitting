@@ -14,33 +14,31 @@ export default Object.assign(base, {
   ]),
   devtool: 'eval-source-map',
   module: {
-    rules: base.module.rules.concat([
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: [{
-          loader: 'style-loader',
-        }, CSSLoaderConfig(), PostCSS, {
-          loader: 'sass-loader',
-        }],
-      },
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [{
-          loader: 'style-loader',
-        }, CSSLoaderConfig(), PostCSS],
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            name: '[sha512:hash:base64:7].[ext]',
-          },
+    rules: base.module.rules.concat([{
+      test: /\.scss$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: 'style-loader',
+      }, CSSLoaderConfig(), PostCSS, {
+        loader: 'sass-loader',
+      }],
+    },
+    {
+      test: /\.css$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: 'style-loader',
+      }, CSSLoaderConfig(), PostCSS],
+    },
+    {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      use: {
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: '[sha512:hash:base64:7].[ext]',
         },
       },
-    ]),
+    }]),
   },
 });

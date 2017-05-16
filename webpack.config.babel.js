@@ -43,60 +43,56 @@ export default Object.assign(base, {
     filename: '[name].[chunkhash].js',
   }),
   module: {
-    rules: base.module.rules.concat([
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [CSSLoaderConfig(true), PostCSS, {
-            loader: 'sass-loader',
-          }],
-        }),
+    rules: base.module.rules.concat([{
+      test: /\.scss$/,
+      exclude: /node_modules/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [CSSLoaderConfig(true), PostCSS, {
+          loader: 'sass-loader',
+        }],
+      }),
+    },
+    {
+      test: /\.css$/,
+      exclude: /node_modules/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [CSSLoaderConfig(true), PostCSS],
+      }),
+    },
+    {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: '[sha512:hash:base64:7].[ext]',
+        },
       },
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [CSSLoaderConfig(true), PostCSS],
-        }),
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              name: '[sha512:hash:base64:7].[ext]',
-            },
+        loader: 'img-loader',
+        options: {
+          gifsicle: {
+            interlaced: false,
           },
-          {
-            loader: 'img-loader',
-            options: {
-              gifsicle: {
-                interlaced: false,
-              },
-              mozjpeg: {
-                progressive: true,
-                arithmetic: false,
-              },
-              optipng: false, // disabled
-              pngquant: {
-                floyd: 0.5,
-                speed: 2,
-              },
-              svgo: {
-                plugins: [
+          mozjpeg: {
+            progressive: true,
+            arithmetic: false,
+          },
+          optipng: false, // disabled
+          pngquant: {
+            floyd: 0.5,
+            speed: 2,
+          },
+          svgo: {
+            plugins: [
             { removeTitle: true },
             { convertPathData: false },
-                ],
-              },
-            },
+            ],
           },
-        ],
-      },
-    ]),
+        },
+      }],
+    }]),
   },
 });
