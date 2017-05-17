@@ -2,6 +2,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import WebpackChunkHash from 'webpack-chunk-hash';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import Htmlplugin from 'html-webpack-plugin';
 import base, { PostCSS, CSSLoaderConfig } from './webpack.base.config.babel';
 
 export default Object.assign(base, {
@@ -38,9 +39,17 @@ export default Object.assign(base, {
       name: 'manifest',
       minChunks: Infinity,
     }),
+    new Htmlplugin({
+      template: './template.ejs',
+      minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+      },
+    }),
   ]),
   output: Object.assign(base.output, {
     filename: '[name].[chunkhash].js',
+    publicPath: './',
   }),
   module: {
     rules: base.module.rules.concat([{
