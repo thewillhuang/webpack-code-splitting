@@ -1,0 +1,13 @@
+{
+  "name": "hello",
+  "bs-dependencies": [
+    "reason-js",
+    "reason-react"
+  ],
+  "sources": [
+  "src/tools/app4"
+  ],
+  "reason": {
+    "react-jsx": true
+  }
+}

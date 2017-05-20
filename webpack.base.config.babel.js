@@ -28,45 +28,48 @@ export default {
     app1: ['./src/tools/app1'],
     app2: ['./src/tools/app2'],
     app3: ['./src/tools/app3'],
+    app4: ['./src/tools/app4/print'],
   },
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      options: {
-        babelrc: false,
-        plugins: ['transform-runtime'],
-        presets: [
-          ['env', {
-            targets: {
-              uglify: true,
-            },
-            modules: false,
-          }],
-          'stage-0',
-          'react',
-        ],
+    rules: [
+      { test: /\.(re|ml)$/, use: 'bs-loader' },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          babelrc: false,
+          plugins: ['transform-runtime'],
+          presets: [
+            ['env', {
+              targets: {
+                uglify: true,
+              },
+              modules: false,
+            }],
+            'stage-0',
+            'react',
+          ],
+        },
       },
-    },
-    {
-      test: /\.scss$/,
-      include: /node_modules/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
-    },
-    {
-      test: /\.css$/,
-      include: /node_modules/,
-      use: ['style-loader', 'css-loader'],
-    },
-    {
-      test: /\.(eot|ttf|woff|woff2)$/,
-      loader: 'url-loader',
-      options: {
-        limit: 10000,
-        name: '[sha512:hash:base64:7].[ext]',
+      {
+        test: /\.scss$/,
+        include: /node_modules/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
-    }],
+      {
+        test: /\.css$/,
+        include: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: '[sha512:hash:base64:7].[ext]',
+        },
+      }],
   },
   output: {
     path: path.resolve('./build'),
@@ -78,6 +81,6 @@ export default {
     new webpack.NoEmitOnErrorsPlugin(),
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.css', '.scss'],
+    extensions: ['.js', '.jsx', '.re', '.ml', '.json', '.css', '.scss'],
   },
 };
