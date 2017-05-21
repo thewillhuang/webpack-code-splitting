@@ -49,7 +49,7 @@ export default Object.assign(base, {
   ]),
   output: Object.assign(base.output, {
     filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js',
+    chunkFilename: '[chunkhash].js',
     publicPath: './',
   }),
   module: {

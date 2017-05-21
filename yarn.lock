@@ -1151,9 +1151,9 @@ browserslist@^2.1.2:
     caniuse-lite "^1.0.30000665"
     electron-to-chromium "^1.3.9"
 
-bs-fetch@BuckleTypes/bs-fetch:
+"bs-fetch@github:buckletypes/bs-fetch":
   version "0.1.1"
-  resolved "https://codeload.github.com/BuckleTypes/bs-fetch/tar.gz/93936a58ec865ed1f695d6931a57c67c14fce020"
+  resolved "https://codeload.github.com/buckletypes/bs-fetch/tar.gz/93936a58ec865ed1f695d6931a57c67c14fce020"
 
 bs-loader@^1.2.4:
   version "1.2.4"
@@ -2577,12 +2577,6 @@ file-entry-cache@^2.0.0:
   dependencies:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
-
-file-loader@^0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-0.11.1.tgz#6b328ee1234a729e4e47d36375dd6d35c0e1db84"
-  dependencies:
-    loader-utils "^1.0.2"
 
 file-type@^3.1.0:
   version "3.9.0"
@@ -6171,9 +6165,9 @@ webpack-sources@^0.2.3:
     source-list-map "^1.1.1"
     source-map "~0.5.3"
 
-webpack@2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.5.1.tgz#61742f0cf8af555b87460a9cd8bba2f1e3ee2fce"
+webpack@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.4.1.tgz#15a91dbe34966d8a4b99c7d656efd92a2e5a6f6a"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
