@@ -5,7 +5,7 @@
     "reason-react"
   ],
   "sources": [
-  "packages/app4"
+  "src/tools/app4"
   ],
   "reason": {
     "react-jsx": true

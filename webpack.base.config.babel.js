@@ -25,10 +25,11 @@ export const CSSLoaderConfig = production => ({
 
 export default {
   entry: {
-    app1: ['./packages/app1'],
-    app2: ['./packages/app2'],
-    app3: ['./packages/app3'],
-    app4: ['./packages/app4'],
+    app1: ['./src/tools/app1'],
+    app2: ['./src/tools/app2'],
+    app3: ['./src/tools/app3'],
+    app4: ['./src/tools/app4'],
+    app5: ['./src/tools/app5'],
   },
   module: {
     rules: [
