@@ -12,5 +12,6 @@
   ],
   "reason": {
     "react-jsx": true
-  }
+  },
+  "package-specs": ["es6"]
 }

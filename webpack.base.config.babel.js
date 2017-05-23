@@ -32,25 +32,51 @@ export default {
   },
   module: {
     rules: [
-      { test: /\.(re|ml)$/, use: 'bs-loader' },
+      {
+        test: /\.(re|ml)$/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            plugins: ['transform-runtime'],
+            presets: [
+              ['env', {
+                targets: {
+                  uglify: true,
+                },
+                modules: false,
+              }],
+              'stage-0',
+              'react',
+            ],
+          },
+        }, {
+          loader: 'bs-loader',
+          options: {
+            module: 'es6',
+          },
+        }],
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          babelrc: false,
-          plugins: ['transform-runtime'],
-          presets: [
-            ['env', {
-              targets: {
-                uglify: true,
-              },
-              modules: false,
-            }],
-            'stage-0',
-            'react',
-          ],
-        },
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            plugins: ['transform-runtime'],
+            presets: [
+              ['env', {
+                targets: {
+                  uglify: true,
+                },
+                modules: false,
+              }],
+              'stage-0',
+              'react',
+            ],
+          },
+        }],
       },
       {
         test: /\.scss$/,
