@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Example from './example';
-import A from '../../shared/a';
-import B from '../../shared/b';
+import A from '../shared/a';
+import B from '../shared/b';
 
 render(
   <h1>

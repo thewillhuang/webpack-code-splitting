@@ -61,7 +61,6 @@ export default Object.assign(base, {
           loader: 'bs-loader',
           options: {
             module: 'es6',
-            errorType: 'warning',
           },
         }],
       }, {

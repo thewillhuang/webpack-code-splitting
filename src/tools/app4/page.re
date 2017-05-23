@@ -12,7 +12,10 @@ module Page = {
     None
   };
   let render {props, updater} =>
-    <div onClick=(updater handleClick)> (ReactRe.stringToElement props.message) </div>;
+    <h3>
+      <p>(ReactRe.stringToElement "-------------------------------")</p>
+      <div onClick=(updater handleClick)> (ReactRe.stringToElement props.message) </div>
+    </h3>;
 };
 
 include ReactRe.CreateComponent Page;
