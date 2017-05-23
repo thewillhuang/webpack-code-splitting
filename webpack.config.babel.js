@@ -5,6 +5,8 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import Htmlplugin from 'html-webpack-plugin';
 import base, { PostCSS, CSSLoaderConfig } from './webpack.base.config.babel';
 
+const production = true;
+
 export default Object.assign(base, {
   plugins: base.plugins.concat([
     new BundleAnalyzerPlugin(),
@@ -58,7 +60,7 @@ export default Object.assign(base, {
       exclude: /node_modules/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: [CSSLoaderConfig(true), PostCSS, {
+        use: [CSSLoaderConfig(production), PostCSS, {
           loader: 'sass-loader',
         }],
       }),
@@ -68,7 +70,7 @@ export default Object.assign(base, {
       exclude: /node_modules/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: [CSSLoaderConfig(true), PostCSS],
+        use: [CSSLoaderConfig(production), PostCSS],
       }),
     },
     {
