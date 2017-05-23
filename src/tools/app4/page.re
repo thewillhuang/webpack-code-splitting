@@ -8,9 +8,9 @@ module Page = {
     let sum = Add.add f1 f2;
     print_endline "clicked!";
     print_int sum;
+    Js.log "it worked!";
     None
   };
-
   let render {props, updater} =>
     <div onClick=(updater handleClick)> (ReactRe.stringToElement props.message) </div>;
 };

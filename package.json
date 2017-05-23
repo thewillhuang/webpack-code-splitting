@@ -4,7 +4,7 @@
   "scripts": {
     "postinstall": "find ./src/tools/* -name package.json -maxdepth 2 -execdir yarn \\;",
     "clean": "find . -name package.json -execdir rm -fr node_modules \\;",
-    "build": "yarn; rm -fr build && webpack --progress --bail --config webpack.config.babel.js",
+    "build": "yarn; rm -fr build && webpack --progress --bail --config webpack.production.config.babel.js",
     "dev": "yarn; rm -fr build && webpack-dev-server --open --hot --output-public-path='/build/' --progress --history-api-fallback --compress --config webpack.dev.config.babel.js"
   },
   "devDependencies": {

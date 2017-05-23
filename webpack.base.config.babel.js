@@ -23,6 +23,24 @@ export const CSSLoaderConfig = production => ({
   },
 });
 
+const babelConfig = {
+  loader: 'babel-loader',
+  options: {
+    babelrc: false,
+    plugins: ['transform-runtime'],
+    presets: [
+      ['env', {
+        targets: {
+          uglify: true,
+        },
+        modules: false,
+      }],
+      'stage-0',
+      'react',
+    ],
+  },
+};
+
 export default {
   entry: {
     app1: ['./src/tools/app1'],
@@ -34,49 +52,18 @@ export default {
     rules: [
       {
         test: /\.(re|ml)$/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            babelrc: false,
-            plugins: ['transform-runtime'],
-            presets: [
-              ['env', {
-                targets: {
-                  uglify: true,
-                },
-                modules: false,
-              }],
-              'stage-0',
-              'react',
-            ],
-          },
-        }, {
+        use: [babelConfig, {
           loader: 'bs-loader',
           options: {
             module: 'es6',
+            errorType: 'warning',
           },
         }],
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            babelrc: false,
-            plugins: ['transform-runtime'],
-            presets: [
-              ['env', {
-                targets: {
-                  uglify: true,
-                },
-                modules: false,
-              }],
-              'stage-0',
-              'react',
-            ],
-          },
-        }],
+        use: [babelConfig],
       },
       {
         test: /\.scss$/,
