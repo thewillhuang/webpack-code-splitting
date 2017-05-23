@@ -5,10 +5,16 @@ module Page = {
   let handleClick _ _ => {
     let f1 = Fib.fib 10;
     let f2 = Fib.fib 20;
-    let sum = Add.add f1 f2;
-    print_endline "clicked!";
-    print_int sum;
-    Js.log "it worked!";
+    let addf1 = Add.add f1;
+    let addf2 = Add.add f2;
+    let newSum = 
+      Add.add f1 f2
+      |> addf1 
+      |> addf2;
+    
+    Js.log "clicked!";
+    Js.log newSum;
+    Js.log "it worked!!";
     None
   };
   let render {props, updater} =>
