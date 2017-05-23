@@ -4,8 +4,11 @@
     "reason-js",
     "reason-react"
   ],
-  "sources": [
-  "src/tools"
+    "sources": [
+    {
+      "dir": "src/tools",
+      "subdirs": ["app4"]
+    }
   ],
   "reason": {
     "react-jsx": true

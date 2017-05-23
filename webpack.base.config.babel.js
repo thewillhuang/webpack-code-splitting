@@ -28,7 +28,7 @@ export default {
     app1: ['./src/tools/app1'],
     app2: ['./src/tools/app2'],
     app3: ['./src/tools/app3'],
-    app4: ['./src/tools/app4/print'],
+    app4: ['./src/tools/app4'],
   },
   module: {
     rules: [
