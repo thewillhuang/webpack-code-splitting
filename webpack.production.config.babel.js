@@ -3,7 +3,7 @@ import WebpackChunkHash from 'webpack-chunk-hash';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import Htmlplugin from 'html-webpack-plugin';
-import base, { PostCSS, CSSLoaderConfig } from './webpack.base.config.babel';
+import base, { PostCSS, CSSLoaderConfig, babelConfig } from './webpack.base.config.babel';
 
 const production = true;
 
@@ -55,56 +55,66 @@ export default Object.assign(base, {
     publicPath: './',
   }),
   module: {
-    rules: base.module.rules.concat([{
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [CSSLoaderConfig(production), PostCSS, {
-          loader: 'sass-loader',
+    rules: base.module.rules.concat([
+      {
+        test: /\.(re|ml)$/,
+        use: [babelConfig, {
+          loader: 'bs-loader',
+          options: {
+            module: 'es6',
+            errorType: 'warning',
+          },
         }],
-      }),
-    },
-    {
-      test: /\.css$/,
-      exclude: /node_modules/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [CSSLoaderConfig(production), PostCSS],
-      }),
-    },
-    {
-      test: /\.(jpe?g|png|gif|svg)$/i,
-      use: [{
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: '[sha512:hash:base64:7].[ext]',
-        },
+      }, {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [CSSLoaderConfig(production), PostCSS, {
+            loader: 'sass-loader',
+          }],
+        }),
       },
       {
-        loader: 'img-loader',
-        options: {
-          gifsicle: {
-            interlaced: false,
-          },
-          mozjpeg: {
-            progressive: true,
-            arithmetic: false,
-          },
-          optipng: false, // disabled
-          pngquant: {
-            floyd: 0.5,
-            speed: 2,
-          },
-          svgo: {
-            plugins: [
-            { removeTitle: true },
-            { convertPathData: false },
-            ],
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [CSSLoaderConfig(production), PostCSS],
+        }),
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name: '[sha512:hash:base64:7].[ext]',
           },
         },
-      }],
-    }]),
+        {
+          loader: 'img-loader',
+          options: {
+            gifsicle: {
+              interlaced: false,
+            },
+            mozjpeg: {
+              progressive: true,
+              arithmetic: false,
+            },
+            optipng: false, // disabled
+            pngquant: {
+              floyd: 0.5,
+              speed: 2,
+            },
+            svgo: {
+              plugins: [
+            { removeTitle: true },
+            { convertPathData: false },
+              ],
+            },
+          },
+        }],
+      }]),
   },
 });

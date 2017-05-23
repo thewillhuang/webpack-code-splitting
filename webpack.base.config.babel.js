@@ -23,7 +23,7 @@ export const CSSLoaderConfig = production => ({
   },
 });
 
-const babelConfig = {
+export const babelConfig = {
   loader: 'babel-loader',
   options: {
     babelrc: false,
@@ -50,16 +50,6 @@ export default {
   },
   module: {
     rules: [
-      {
-        test: /\.(re|ml)$/,
-        use: [babelConfig, {
-          loader: 'bs-loader',
-          options: {
-            module: 'es6',
-            errorType: 'warning',
-          },
-        }],
-      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
