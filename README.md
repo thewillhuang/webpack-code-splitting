@@ -1,6 +1,8 @@
 Different versions of react and react-router mounting on different DOM nodes, along with properly long-term cached production code
 
 ### install
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/thewillhuang/webpack-code-splitting.svg)](https://greenkeeper.io/)
 ```bash
 yarn
 ```
