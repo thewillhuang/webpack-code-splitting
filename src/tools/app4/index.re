@@ -1,1 +1,1 @@
-ReactDOMRe.renderToElementWithId <Page message="Hello from ReasonML ;)" /> "App4";
+ReactDOMRe.renderToElementWithId <Page message="App4 running with ReasonML ;)" /> "App4";

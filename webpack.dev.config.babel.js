@@ -8,6 +8,7 @@ export default Object.assign(base, {
   },
   output: Object.assign(base.output, {
     devtoolModuleFilenameTemplate: '/[absolute-resource-path]',
+    filename: '[name].js',
   }),
   plugins: base.plugins.concat([
     new webpack.NamedModulesPlugin(),

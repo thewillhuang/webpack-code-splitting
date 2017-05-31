@@ -77,7 +77,6 @@ export default {
   output: {
     path: path.resolve('./build'),
     publicPath: './build',
-    filename: '[name].js',
   },
   plugins: [
     new ForceCaseSensitivity(),
