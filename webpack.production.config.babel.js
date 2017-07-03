@@ -2,8 +2,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import WebpackChunkHash from 'webpack-chunk-hash';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import Htmlplugin from 'html-webpack-plugin';
-import base, { PostCSS, CSSLoaderConfig, babelConfig } from './webpack.base.config.babel';
+import base, { PostCSS, CSSLoaderConfig } from './webpack.base.config.babel';
 
 const production = true;
 
@@ -40,30 +39,14 @@ export default Object.assign(base, {
       name: 'manifest',
       minChunks: Infinity,
     }),
-    new Htmlplugin({
-      template: './template.ejs',
-      minify: {
-        removeAttributeQuotes: true,
-        collapseWhitespace: true,
-      },
-    }),
   ]),
   output: Object.assign(base.output, {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
-    publicPath: './',
   }),
   module: {
     rules: base.module.rules.concat([
       {
-        test: /\.(re|ml)$/,
-        use: [babelConfig, {
-          loader: 'bs-loader',
-          options: {
-            module: 'es6',
-          },
-        }],
-      }, {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({

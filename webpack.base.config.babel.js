@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import ForceCaseSensitivity from 'case-sensitive-paths-webpack-plugin';
+import HtmlPlugin from 'html-webpack-plugin';
 
 export const PostCSS = {
   loader: 'postcss-loader',
@@ -43,10 +44,9 @@ export const babelConfig = {
 
 export default {
   entry: {
-    app1: ['./src/tools/app1'],
-    app2: ['./src/tools/app2'],
-    app3: ['./src/tools/app3'],
-    app4: ['./src/tools/app4'],
+    app1: ['./packages/app1'],
+    app2: ['./packages/app2'],
+    app3: ['./packages/app3'],
   },
   module: {
     rules: [
@@ -75,14 +75,21 @@ export default {
       }],
   },
   output: {
-    path: path.resolve('./build'),
-    publicPath: './build',
+    path: path.resolve('./dist'),
   },
   plugins: [
     new ForceCaseSensitivity(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlPlugin({
+      inject: true,
+      template: './template.ejs',
+      minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+      },
+    }),
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.re', '.ml', '.json', '.css', '.scss'],
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss'],
   },
 };

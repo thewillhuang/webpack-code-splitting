@@ -1,9 +1,10 @@
 import webpack from 'webpack';
-import base, { PostCSS, CSSLoaderConfig, babelConfig } from './webpack.base.config.babel';
+import base, { PostCSS, CSSLoaderConfig } from './webpack.base.config.babel';
 
 export default Object.assign(base, {
   devServer: {
     overlay: true,
+    compress: true,
     port: 8000,
   },
   output: Object.assign(base.output, {
@@ -17,15 +18,6 @@ export default Object.assign(base, {
   module: {
     rules: base.module.rules.concat([
       {
-        test: /\.(re|ml)$/,
-        use: [babelConfig, {
-          loader: 'bs-loader',
-          options: {
-            module: 'es6',
-            errorType: 'warning',
-          },
-        }],
-      }, {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [{
