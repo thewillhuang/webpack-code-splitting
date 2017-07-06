@@ -2,6 +2,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import WebpackChunkHash from 'webpack-chunk-hash';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import PrepackWebpackPlugin from 'prepack-webpack-plugin';
 import base, { PostCSS, CSSLoaderConfig } from './webpack.base.config.babel';
 
 const production = true;
@@ -26,6 +27,11 @@ export default Object.assign(base, {
         comments: false,
       },
       sourceMap: false,
+    }),
+    new PrepackWebpackPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      async: true,
+      child: true,
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
