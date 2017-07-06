@@ -28,10 +28,6 @@ export default Object.assign(base, {
       sourceMap: false,
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      async: true,
-      minChunks: 2,
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
       minChunks: 2,
     }),

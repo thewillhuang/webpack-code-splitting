@@ -47,6 +47,8 @@ export default {
     app1: ['./packages/app1'],
     app2: ['./packages/app2'],
     app3: ['./packages/app3'],
+    app4: ['./packages/app4'],
+    app5: ['./packages/app5'],
   },
   module: {
     rules: [
