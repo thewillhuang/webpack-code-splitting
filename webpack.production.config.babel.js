@@ -29,6 +29,7 @@ export default Object.assign(base, {
       sourceMap: false,
     }),
     new PrepackWebpackPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       async: true,
       child: true,
