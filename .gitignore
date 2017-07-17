@@ -2,5 +2,5 @@ npm-debug.log
 .DS_Store
 lib/
 node_modules/
-dist/
+dist
 .merlin
