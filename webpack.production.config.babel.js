@@ -17,17 +17,6 @@ export default Object.assign(base, {
     }),
     new webpack.HashedModuleIdsPlugin(),
     new WebpackChunkHash(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_debugger: true,
-        drop_console: true,
-      },
-      output: {
-        comments: false,
-      },
-      sourceMap: false,
-    }),
     new PrepackWebpackPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
@@ -41,6 +30,17 @@ export default Object.assign(base, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       minChunks: Infinity,
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_debugger: true,
+        drop_console: true,
+      },
+      output: {
+        comments: false,
+      },
+      sourceMap: false,
     }),
   ]),
   output: Object.assign(base.output, {
