@@ -41,7 +41,7 @@
     "preact": "^8.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.1",
+    "react-router-dom": "^4.1.2",
     "webpack": "^3.3.0",
     "webpack-bundle-analyzer": "^2.8.3",
     "webpack-chunk-hash": "^0.4.0"

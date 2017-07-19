@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react": "^0.14",
+    "react-router": "3"
+  }
+}
