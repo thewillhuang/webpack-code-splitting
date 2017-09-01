@@ -1,23 +1,18 @@
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import WebpackChunkHash from 'webpack-chunk-hash';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import PrepackWebpackPlugin from 'prepack-webpack-plugin';
 import base, { PostCSS, CSSLoaderConfig } from './webpack.base.config.babel';
 
 const production = true;
 
 export default Object.assign(base, {
   plugins: base.plugins.concat([
-    new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
     new webpack.HashedModuleIdsPlugin(),
-    new WebpackChunkHash(),
-    new PrepackWebpackPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       async: true,
