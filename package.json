@@ -7,7 +7,7 @@
     "nuke": "npm run clean",
     "build": "yarn; rm -fr dist && webpack --progress --bail --config webpack.production.config.babel.js",
     "size": "yarn; rm -fr dist && webpack --progress --bail --config webpack.size.config.babel.js",
-    "dev": "yarn; rm -fr dist && webpack-dev-server --open --hot --progress --config webpack.dev.config.babel.js"
+    "dev": "yarn; rm -fr dist && webpack-dev-server --open --hot --progress --color --config webpack.dev.config.babel.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -39,12 +39,13 @@
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.29.0",
-    "preact": "^8.2.5",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router-dom": "^4.2.2",
     "webpack": "^3.5.5",
     "webpack-bundle-analyzer": "^2.8.3",
     "webpack-chunk-hash": "^0.4.0"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:thewillhuang/webpack-code-splitting.git",
+  "author": "William Huang <will.h86@gmail.com>",
+  "license": "MIT"
 }
